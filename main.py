@@ -16,11 +16,12 @@ from flask_login import (
 from forms import CreatePostForm, RegisterUserForm, LoginUserForm, CreateCommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
+import os
 
 # App config
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Extensions
